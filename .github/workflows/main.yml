@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: HTTP request
       run: |
-        for i in {1..1000}; do
+        for i in {1..100000}; do
           status=$(curl -s -o /dev/null -w '%{http_code}' https://www.biomart.cn/infosupply/105906991.htm)
           echo "Visit $i returned status code: $status"
         done
