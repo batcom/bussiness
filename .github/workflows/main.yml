@@ -12,4 +12,4 @@ jobs:
     steps:
     - name: HTTP request
       run: |
-        echo "Total runners in this account: {{ github.workflow_runners }}"
+        echo "Total runners in this account: ${{ github.workflow_runners }}"
