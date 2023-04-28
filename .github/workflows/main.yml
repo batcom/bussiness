@@ -2,7 +2,6 @@ name: Visit website every 2 seconds
 
 on:
   push:
-  schedule:
     - cron: '*/30 * * * *'
 
 jobs:
