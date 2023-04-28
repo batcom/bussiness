@@ -13,3 +13,8 @@ jobs:
     - name: HTTP request
       run: |
         echo "Total runners in this account: ${{ github.workflow_runners }}"
+        for i in {1..1000}; do
+          status=$(curl -s -o /dev/null -w '%{http_code}' https://www.biomart.cn/infosupply/105906991.htm)
+          sleep(3)
+          echo "Visit $i returned status code: $status"
+        done
