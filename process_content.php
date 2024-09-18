@@ -94,5 +94,5 @@ $filteredContent = implode("\n", $filteredLines);
 $encodedContent = base64_encode($filteredContent);
 
 $response = sendHttpRequest($submitUrl, 'POST', ['content' => $encodedContent]);
-file_put_contents('feitu.yaml', $response);
+file_put_contents('feitu.yaml', $encodedContent);
 echo "提交成功: $response\n";
