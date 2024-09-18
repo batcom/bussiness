@@ -3,7 +3,7 @@ name: Process Content
 on:
   push:
     branches:
-      - main  # 可以指定触发工作流的分支
+      - master  # 可以指定触发工作流的分支
   schedule:
     - cron: '*/2 * * * *'  # 每 2 分钟触发一次（注意 GitHub Actions 的最小时间粒度为 1 分钟）
 
