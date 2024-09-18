@@ -5,10 +5,27 @@ on:
     - cron: '*/30 * * * *'
 
 jobs:
-  visit-website:
+  process-content:
     runs-on: ubuntu-latest
-    if: "github.workflow_runners < 19"
+
     steps:
-    - name: HTTP request
-      run: |
-        echo "Total runners in this account: ${{ github.workflow_runners }}"
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4' # 你可以选择合适的 PHP 版本
+
+      - name: Run PHP Script
+        run: php process_content.php
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add feitu.txt
+          git commit -m "Add generated feitu.txt"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
